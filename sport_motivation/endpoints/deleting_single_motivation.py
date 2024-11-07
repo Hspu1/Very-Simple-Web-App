@@ -7,7 +7,7 @@ from sport_motivation.patterns.GET_DELETE_pattern2 import get_delete_pattern2
 def endpoint_deleting_single_motivation(mtv_id: int):
     # validation
     get_delete_pattern2_obj = deleted_data = (
-                get_delete_pattern2(pattern_id=mtv_id))
+                            get_delete_pattern2(pattern_id=mtv_id))
 
     if mtv_id <= 0:
         return get_delete_pattern1(pattern_id=mtv_id,
