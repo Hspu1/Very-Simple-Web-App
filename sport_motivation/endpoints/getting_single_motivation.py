@@ -1,4 +1,3 @@
-from sport_motivation.main_files.motivation_fake_db import sport_mtv
 from sport_motivation.patterns.GET_pattern import get_pattern
 from sport_motivation.patterns.GET_DELETE_pattern1 import get_delete_pattern1
 from sport_motivation.patterns.GET_DELETE_pattern2 import get_delete_pattern2
