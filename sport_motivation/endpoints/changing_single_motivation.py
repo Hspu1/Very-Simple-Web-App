@@ -1,6 +1,6 @@
 from sport_motivation.models.PUTModel import SPutData
-from sport_motivation.main_files.motivation_fake_db import sport_mtv
 from sport_motivation.patterns.PUT_pattern import put_pattern
+from main_files.motivation_fake_db import sport_mtv
 
 from typing import Annotated
 

@@ -1,4 +1,4 @@
-from sport_motivation.main_files.motivation_fake_db import sport_mtv
+from main_files.motivation_fake_db import sport_mtv
 
 
 def get_delete_pattern2(pattern_id: int):
