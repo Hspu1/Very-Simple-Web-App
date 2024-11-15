@@ -1,4 +1,6 @@
+from sport_motivation.models.POSTModel import SPostData
 from sport_motivation.models.PUTModel import SPutData
+
 from sport_motivation.patterns.PUT_pattern import put_pattern
 from main_files.motivation_fake_db import sport_mtv
 
@@ -8,8 +10,8 @@ from fastapi import Depends
 
 
 def endpoint_changing_single_motivation(
-        endpoint_put_data: Annotated[SPutData, Depends()]):
-    # validation    e
+        endpoint_put_data: Annotated[SPutData, Depends()]
+) -> dict[str, int | str | dict | SPostData | SPutData]:
     entered_mtv_sport_id = list(endpoint_put_data)[0][1]
 
     for sport_mtv_data in sport_mtv:

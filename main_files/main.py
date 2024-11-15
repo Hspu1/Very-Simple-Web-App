@@ -8,8 +8,6 @@ from sport_motivation.endpoints.changing_single_motivation import (
     endpoint_changing_single_motivation)
 from sport_motivation.endpoints.deleting_all_motivation import (
     endpoint_deleting_all_motivation)
-from sport_motivation.endpoints.deleting_single_motivation import (
-    endpoint_deleting_single_motivation)
 
 from sport_motivation.models.POSTModel import SPostData
 from sport_motivation.models.PUTModel import SPutData
@@ -33,8 +31,8 @@ def getting_all_motivation_data() -> dict[str, int | list | str]:
 
 @app.get(tags=["sport_motivation"],
          path="/getting_motivation_data{sport_mtv_id}")
-def getting_motivation_data(sport_mtv_id: int):
-    # validation
+def getting_motivation_data(sport_mtv_id: int) -> dict[
+                            str, str] | dict | SPostData | SPutData | bool:
     return endpoint_getting_single_motivation(mtv_id=sport_mtv_id)
 
 
@@ -51,8 +49,7 @@ def adding_motivation_data(post_data: Annotated[SPostData, Depends()]
 @app.put(tags=["sport_motivation"], path="/changing_motivation_data")
 def changing_motivation_data(
         put_data: Annotated[SPutData, Depends()]
-):
-    # validation
+) -> dict[str, int | str | dict | SPostData | SPutData]:
     return endpoint_changing_single_motivation(endpoint_put_data=put_data)
 
 
@@ -62,10 +59,3 @@ def deleting_all_motivation_data() -> dict[str, int | str]:
         "status": 200,
         "feedback": endpoint_deleting_all_motivation()
     }
-
-
-@app.delete(tags=["sport_motivation"],
-            path="/deleting_all_motivation_data{sport_mtv_id}")
-def deleting_motivation_data(sport_mtv_id: int):
-    # validation
-    return endpoint_deleting_single_motivation(mtv_id=sport_mtv_id)
