@@ -1,9 +1,9 @@
 from sport_motivation.models.POSTModel import SPostData
 from sport_motivation.models.PUTModel import SPutData
 
-from sport_motivation.patterns.GET_pattern3 import get_pattern3
 from sport_motivation.patterns.GET_pattern1 import get_pattern1
 from sport_motivation.patterns.GET_pattern2 import get_pattern2
+from sport_motivation.patterns.GET_pattern3 import get_pattern3
 
 
 def endpoint_getting_single_motivation(mtv_id: int) -> dict[

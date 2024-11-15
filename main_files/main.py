@@ -49,8 +49,7 @@ def adding_motivation_data(post_data: Annotated[SPostData, Depends()]
 @app.put(tags=["sport_motivation"], path="/changing_motivation_data")
 def changing_motivation_data(
         put_data: Annotated[SPutData, Depends()]
-):
-    # validation# validation# validation# validation# validation# validation# validation# validation
+) -> dict[str, int | str | dict | SPostData | SPutData]:
     return endpoint_changing_single_motivation(endpoint_put_data=put_data)
 
 
