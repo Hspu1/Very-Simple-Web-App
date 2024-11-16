@@ -1,10 +1,10 @@
-from sport_motivation.models.POSTModel import SPostData
-from sport_motivation.models.PUTModel import SPutData
+from sport_motivation.models.POSTSportModel import SPostSport
+from sport_motivation.models.PUTSportModel import SPutSport
 
 
-def put_pattern(num: int, pattern_id: int, old_pattern_data=None,
+def put_sport_pattern(num: int, pattern_id: int, old_pattern_data=None,
                 new_pattern_data=None
-                    ) -> dict[str, int | str | dict | SPostData | SPutData]:
+                    ) -> dict[str, int | str | dict | SPostSport | SPutSport]:
     if num:
         return {
             "status": 200,
