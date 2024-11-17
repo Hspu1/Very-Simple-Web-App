@@ -1,5 +1,6 @@
-from sport_motivation.models.POSTSportModel import SPostSport
 from main_files.motivation_fake_dbs import sport_mtv
+
+from sport_motivation.models.POSTSportModel import SPostSport
 
 from typing import Annotated
 

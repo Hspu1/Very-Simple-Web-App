@@ -1,15 +1,16 @@
-from sport_motivation.models.POSTSportModel import SPostSport
-from sport_motivation.models.PUTSportModel import SPutSport
+from main_files.motivation_fake_dbs import sport_mtv
 
 from sport_motivation.patterns.PUT_sport_pattern import put_sport_pattern
-from main_files.motivation_fake_dbs import sport_mtv
+
+from sport_motivation.models.POSTSportModel import SPostSport
+from sport_motivation.models.PUTSportModel import SPutSport
 
 from typing import Annotated
 
 from fastapi import Depends
 
 
-def changing_single_sport_motivation(
+def changing_single_sport_mtv(
         endpoint_put_data: Annotated[SPutSport, Depends()]
 ) -> dict[str, int | str | dict | SPostSport | SPutSport]:
     entered_mtv_sport_id = list(endpoint_put_data)[0][1]

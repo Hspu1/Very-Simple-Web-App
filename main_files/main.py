@@ -1,24 +1,29 @@
 from sport_motivation.endpoints.getting_all_sport_motivation import (
-    getting_all_sport_motivation)
+    getting_all_sport_mtv)
 from sport_motivation.endpoints.getting_single_sport_motivation import (
-    getting_single_sport_motivation)
+    getting_single_sport_mtv)
 from sport_motivation.endpoints.adding_single_sport_motivation import (
-    adding_single_sport_motivation)
+    adding_single_sport_mtv)
 from sport_motivation.endpoints.changing_single_sport_motivation import (
-    changing_single_sport_motivation)
+    changing_single_sport_mtv)
 from sport_motivation.endpoints.deleting_all_sport_motivation import (
-    deleting_all_sport_motivation)
+    deleting_all_sport_mtv)
 
 from sport_motivation.models.POSTSportModel import SPostSport
 from sport_motivation.models.PUTSportModel import SPutSport
 
+from study_motivation.endpoints.getting_all_study_motivation import (
+    getting_all_study_mtv)
 from study_motivation.endpoints.getting_single_study_motivation import (
-    getting_single_study_motivation)
+    getting_single_study_mtv)
+from study_motivation.endpoints.adding_single_study_motivation import (
+    adding_single_study_mtv)
+
+from study_motivation.models.POSTStudyModel import SPostStudy
 
 from typing import Annotated
 
 from fastapi import FastAPI, Depends
-
 
 app = FastAPI(
     title="Motivation"
@@ -29,7 +34,7 @@ app = FastAPI(
 def getting_all_sport_motivation() -> dict[str, int | list | str]:
     return {
         "status": 200,
-        "all_data": getting_all_sport_motivation()
+        "all_data": getting_all_sport_mtv()
     }
 
 
@@ -39,7 +44,7 @@ def getting_sport_motivation(sport_mtv_id: int) -> dict[
                             str, str] | dict | SPostSport | SPutSport | bool:
     return {
         "status": 200,
-        "data": getting_single_sport_motivation(mtv_id=sport_mtv_id)
+        "data": getting_single_sport_mtv(mtv_id=sport_mtv_id)
     }
 
 
@@ -49,7 +54,7 @@ def adding_sport_motivation(post_data: Annotated[SPostSport, Depends()]
     return {
         "status": 200,
         "entered_data":
-            adding_single_sport_motivation(endpoint_post_data=post_data)
+            adding_single_sport_mtv(endpoint_post_data=post_data)
     }
 
 
@@ -57,16 +62,25 @@ def adding_sport_motivation(post_data: Annotated[SPostSport, Depends()]
 def changing_sport_motivation(
         put_data: Annotated[SPutSport, Depends()]
 ) -> dict[str, int | str | dict | SPostSport | SPutSport]:
-    return changing_single_sport_motivation(endpoint_put_data=put_data)
+    return changing_single_sport_mtv(endpoint_put_data=put_data)
 
 
 @app.delete(tags=["sport_motivation"], path="/deleting_all_sport_motivation")
 def deleting_all_sport_motivation() -> dict[str, int | str]:
     return {
         "status": 200,
-        "feedback": deleting_all_sport_motivation()
+        "feedback": deleting_all_sport_mtv()
     }
 
+
+
+@app.get(tags=["study_motivation"], path="/getting_all_study_motivation")
+def getting_all_study_motivation():
+    # validation
+    return {
+        "status": 200,
+        "all_data": getting_all_study_mtv()
+    }
 
 
 @app.get(tags=["study_motivation"],
@@ -75,5 +89,16 @@ def getting_study_motivation(study_mtv_id: int):
     # validation
     return {
         "status": 200,
-        "data": getting_single_study_motivation(mtv_id=study_mtv_id)
+        "data": getting_single_study_mtv(mtv_id=study_mtv_id)
+    }
+
+
+@app.post(tags=["study_motivation"], path="/adding_study_motivation")
+def adding_study_motivation(post_data: Annotated[SPostStudy, Depends()]
+                            ):
+    # validation
+    return {
+        "status": 200,
+        "entered_data":
+            adding_single_study_mtv(endpoint_post_data=post_data)
     }
