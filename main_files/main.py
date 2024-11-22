@@ -18,6 +18,8 @@ from study_motivation.endpoints.getting_single_study_motivation import (
     getting_single_study_mtv)
 from study_motivation.endpoints.adding_single_study_motivation import (
     adding_single_study_mtv)
+from study_motivation.endpoints.deleting_all_study_motivation import (
+    deleting_all_study_mtv)
 
 from study_motivation.models.POSTStudyModel import SPostStudy
 
@@ -41,7 +43,7 @@ def getting_all_sport_motivation() -> dict[str, int | list | str]:
 @app.get(tags=["sport_motivation"],
          path="/getting_sport_motivation{sport_mtv_id}")
 def getting_sport_motivation(sport_mtv_id: int) -> dict[
-                            str, str] | dict | SPostSport | SPutSport | bool:
+                                str, str] | dict | SPostSport | SPutSport:
     return {
         "status": 200,
         "data": getting_single_sport_mtv(mtv_id=sport_mtv_id)
@@ -50,7 +52,7 @@ def getting_sport_motivation(sport_mtv_id: int) -> dict[
 
 @app.post(tags=["sport_motivation"], path="/adding_sport_motivation")
 def adding_sport_motivation(post_data: Annotated[SPostSport, Depends()]
-                           ) -> dict[str, int | (SPostSport | str)]:
+                           ) -> dict[str, int | SPostSport | str]:
     return {
         "status": 200,
         "entered_data":
@@ -75,8 +77,7 @@ def deleting_all_sport_motivation() -> dict[str, int | str]:
 
 
 @app.get(tags=["study_motivation"], path="/getting_all_study_motivation")
-def getting_all_study_motivation():
-    # validation
+def getting_all_study_motivation() -> dict[str, int | list | str]:
     return {
         "status": 200,
         "all_data": getting_all_study_mtv()
@@ -85,8 +86,8 @@ def getting_all_study_motivation():
 
 @app.get(tags=["study_motivation"],
          path="/getting_study_motivation{study_mtv_id}")
-def getting_study_motivation(study_mtv_id: int):
-    # validation
+def getting_study_motivation(study_mtv_id: int) -> dict[
+                            str, int | dict[str, str] | dict | SPostStudy]:
     return {
         "status": 200,
         "data": getting_single_study_mtv(mtv_id=study_mtv_id)
@@ -95,10 +96,17 @@ def getting_study_motivation(study_mtv_id: int):
 
 @app.post(tags=["study_motivation"], path="/adding_study_motivation")
 def adding_study_motivation(post_data: Annotated[SPostStudy, Depends()]
-                            ):
-    # validation
+                            ) -> dict[str, int | SPostStudy | str]:
     return {
         "status": 200,
         "entered_data":
             adding_single_study_mtv(endpoint_post_data=post_data)
+    }
+
+
+@app.delete(tags=["study_motivation"], path="/deleting_all_study_motivation")
+def deleting_all_study_motivation() -> dict[str, int | str]:
+    return {
+        "status": 200,
+        "feedback": deleting_all_study_mtv()
     }

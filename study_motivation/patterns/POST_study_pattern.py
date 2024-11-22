@@ -8,8 +8,6 @@ from fastapi import Depends
 
 
 def post_study_pattern(
-        pattern_post_data: Annotated[SPostStudy, Depends()]
-):
-    # validation
+        pattern_post_data: Annotated[SPostStudy, Depends()]) -> SPostStudy:
     study_mtv.append(pattern_post_data)
     return pattern_post_data

@@ -12,8 +12,7 @@ from fastapi import Depends
 
 def adding_single_study_mtv(
         endpoint_post_data: Annotated[SPostStudy, Depends()]
-):
-    # validation
+) -> SPostStudy | str:
     entered_study_mtv_id = list(endpoint_post_data)[0][1]
 
     return post_study_pattern(pattern_post_data=endpoint_post_data) \

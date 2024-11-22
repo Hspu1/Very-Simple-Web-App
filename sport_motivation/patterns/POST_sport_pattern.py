@@ -8,7 +8,6 @@ from fastapi import Depends
 
 
 def post_sport_pattern(
-        pattern_post_data: Annotated[SPostSport, Depends()]
-) -> SPostSport:
+        pattern_post_data: Annotated[SPostSport, Depends()]) -> SPostSport:
     sport_mtv.append(pattern_post_data)
     return pattern_post_data
