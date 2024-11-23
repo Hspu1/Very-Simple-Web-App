@@ -1,4 +1,4 @@
 # ***CRUD-приложение на FastAPI***
 ####
 
-![image](https://disk.yandex.ru/i/VntqgpiNsrNSQw)
+![image](https://disk.yandex.ru/i/JbZVUsOdsySWmQ)
