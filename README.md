@@ -1,5 +1,5 @@
 # ***CRUD-приложение на FastAPI***
-####
+##
 ## Запуск на пк
 ### **1. Клонирование репозитория**
 > git clone https://github.com/MaxWorkIT/Very-Simple-Web-App.git
@@ -12,7 +12,7 @@
 ### **3. Запуск c uvicorn**
 > uvicorn main_files.main:app
 ### **4. Переход по [ссылке](http://127.0.0.1:8000/docs)**
-###
+#
 ## Эксплуатация
 ### Есть два блока:
 ```sport_motivation``` и ```study_motivation``` (мотивация для спорта и для учёбы соответственно)
