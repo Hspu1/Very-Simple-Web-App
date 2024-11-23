@@ -10,8 +10,7 @@ from typing import Annotated
 from fastapi import Depends
 
 
-def changing_single_sport_mtv(
-        endpoint_put_data: Annotated[SPutSport, Depends()]
+def changing_sport_mtv(endpoint_put_data: Annotated[SPutSport, Depends()]
 ) -> dict[str, int | str | dict | SPostSport | SPutSport]:
     entered_mtv_sport_id = list(endpoint_put_data)[0][1]
 
