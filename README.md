@@ -1,4 +1,4 @@
-# ***❗ CRUD-приложение на FastAPI ❗***
+# ***CRUD-приложение на FastAPI***
 ####
 
-![image](file:///C:/Users/Макс/Downloads/mtv_image.png)
+![image](https://disk.yandex.ru/i/VntqgpiNsrNSQw)
