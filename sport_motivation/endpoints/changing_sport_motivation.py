@@ -1,6 +1,8 @@
 from main_files.motivation_fake_dbs import sport_mtv
 
-from sport_motivation.patterns.PUT_sport_pattern import put_sport_pattern
+from main_files.patterns.GET_POST_PUT_PATCH_pattern import (
+    get_post_put_patch_pattern)
+from main_files.patterns.PUT_PATCH_pattern import put_patch_pattern
 
 from sport_motivation.models.POSTSportModel import SPostSport
 from sport_motivation.models.PUTSportModel import SPutSport
@@ -11,7 +13,7 @@ from fastapi import Depends
 
 
 def changing_sport_mtv(endpoint_put_data: Annotated[SPutSport, Depends()]
-) -> dict[str, int | str | dict | SPostSport | SPutSport]:
+) -> dict[str, str | dict | SPostSport | SPutSport]:
     entered_mtv_sport_id = list(endpoint_put_data)[0][1]
 
     for sport_mtv_data in sport_mtv:
@@ -20,8 +22,13 @@ def changing_sport_mtv(endpoint_put_data: Annotated[SPutSport, Depends()]
             sport_mtv.remove(sport_mtv_data)
             sport_mtv.insert(entered_mtv_sport_id - 1, endpoint_put_data)
 
-            return put_sport_pattern(num=1, pattern_id=entered_mtv_sport_id,
-                                     old_pattern_data=old_data,
-                                     new_pattern_data=endpoint_put_data)
+            return put_patch_pattern(
+                custom_message="the new data has successfully "
+                               "replaced the old ones",
+                old_data=old_data,
+                new_data=endpoint_put_data
+            )
 
-    return put_sport_pattern(num=0, pattern_id=entered_mtv_sport_id)
+    return get_post_put_patch_pattern(correction="sport",
+                                      mtv_id=entered_mtv_sport_id,
+                                      custom_message="isn`t in the database")

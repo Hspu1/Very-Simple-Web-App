@@ -1,7 +1,7 @@
 from main_files.motivation_fake_dbs import study_mtv
 
-from main_files.main_patterns.POST_pattern import post_pattern
-from study_motivation.patterns.POST_study_pattern import post_study_pattern
+from main_files.patterns.GET_POST_PUT_PATCH_pattern import (
+    get_post_put_patch_pattern)
 
 from study_motivation.models.POSTStudyModel import SPostStudy
 
@@ -12,10 +12,17 @@ from fastapi import Depends
 
 def adding_single_study_mtv(
         endpoint_post_data: Annotated[SPostStudy, Depends()]
-) -> SPostStudy | str:
+) -> dict[str, str | SPostStudy]:
     entered_study_mtv_id = list(endpoint_post_data)[0][1]
 
-    return post_study_pattern(pattern_post_data=endpoint_post_data) \
-        if (not study_mtv and entered_study_mtv_id == 1
-            or len(study_mtv) + 1 == entered_study_mtv_id) \
-        else post_pattern(mtv_id=entered_study_mtv_id)
+    if (not study_mtv and entered_study_mtv_id == 1
+            or len(study_mtv) + 1 == entered_study_mtv_id):
+        study_mtv.append(endpoint_post_data)
+        return {
+            "info": "the data has been successfully added to the database",
+            "entered_data": endpoint_post_data
+        }
+
+    return get_post_put_patch_pattern(correction="study",
+                                    mtv_id=entered_study_mtv_id,
+                                custom_message="is already in the database")

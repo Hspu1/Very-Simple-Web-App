@@ -8,10 +8,9 @@ def put_patch_pattern(
         old_data: dict | SPostSport | SPutSport | SPostStudy,
         new_data: dict | SPostSport | SPutSport | SPostStudy
                     ) -> dict[
-                str, int | str | dict | SPostSport | SPutSport | SPostStudy]:
+                str, str | dict | SPostSport | SPutSport | SPostStudy]:
     return {
-            "status": 200,
-            "feedback": custom_message,
+            "info": custom_message,
             "old_data": old_data,
             "new_data": new_data
         }
