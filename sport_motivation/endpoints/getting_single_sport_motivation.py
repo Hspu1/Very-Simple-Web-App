@@ -1,7 +1,7 @@
 from main_files.motivation_fake_dbs import sport_mtv
 
-from main_files.patterns.GET_POST_PUT_PATCH_pattern import (
-    get_post_put_patch_pattern)
+from main_files.responses.GET_POST_PUT_PATCH_response import (
+    get_post_put_patch_response)
 
 from sport_motivation.models.GETSportModel import SGetSport
 from sport_motivation.models.POSTSportModel import SPostSport
@@ -21,6 +21,6 @@ def getting_single_sport_mtv(sport_mtv_id: Annotated[SGetSport, Depends()]
                 or list(sport_mtv_data)[0][1] == int_sport_mtv_id):
             return sport_mtv_data
 
-    return get_post_put_patch_pattern(correction="sport",
-                                      mtv_id=int_sport_mtv_id,
-                                      custom_message="isn`t in the database")
+    return get_post_put_patch_response(correction="sport",
+                                       mtv_id=int_sport_mtv_id,
+                                       custom_message="isn`t in the database")

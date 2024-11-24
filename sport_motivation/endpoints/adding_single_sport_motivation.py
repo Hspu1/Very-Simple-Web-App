@@ -1,7 +1,7 @@
 from main_files.motivation_fake_dbs import sport_mtv
 
-from main_files.patterns.GET_POST_PUT_PATCH_pattern import (
-    get_post_put_patch_pattern)
+from main_files.responses.GET_POST_PUT_PATCH_response import (
+    get_post_put_patch_response)
 
 from sport_motivation.models.POSTSportModel import SPostSport
 
@@ -23,6 +23,6 @@ def adding_single_sport_mtv(
             "entered_data": endpoint_post_data
         }
 
-    return get_post_put_patch_pattern(correction="sport",
-                                    mtv_id=entered_sport_mtv_id,
-                                custom_message="is already in the database")
+    return get_post_put_patch_response(correction="sport",
+                                       mtv_id=entered_sport_mtv_id,
+                                       custom_message="is already in the database")

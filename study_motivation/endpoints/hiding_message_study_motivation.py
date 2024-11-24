@@ -1,8 +1,8 @@
 from main_files.motivation_fake_dbs import study_mtv
 
-from main_files.patterns.GET_POST_PUT_PATCH_pattern import (
-    get_post_put_patch_pattern)
-from main_files.patterns.PUT_PATCH_pattern import put_patch_pattern
+from main_files.responses.GET_POST_PUT_PATCH_response import (
+    get_post_put_patch_response)
+from main_files.responses.PUT_PATCH_response import put_patch_response
 
 from study_motivation.models.PATCHStudyModel import SPatchStudy
 from study_motivation.models.POSTStudyModel import SPostStudy
@@ -29,12 +29,10 @@ def hiding_message_study_mtv(study_mtv_id: Annotated[SPatchStudy, Depends()]
             study_mtv.remove(study_mtv_data)
             study_mtv.insert(int_study_mtv_id - 1, new_data)
 
-            return put_patch_pattern(
+            return put_patch_response(
                 custom_message="The message has been successfully hidden",
-                old_data=old_data,
-                new_data=new_data
-            )
+                old_data=old_data, new_data=new_data)
 
-    return get_post_put_patch_pattern(correction="study",
-                                        mtv_id=int_study_mtv_id,
-                                      custom_message="isn`t in the database")
+    return get_post_put_patch_response(correction="study",
+                                       mtv_id=int_study_mtv_id,
+                                       custom_message="isn`t in the database")

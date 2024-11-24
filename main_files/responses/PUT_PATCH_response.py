@@ -3,7 +3,7 @@ from sport_motivation.models.PUTSportModel import SPutSport
 from study_motivation.models.POSTStudyModel import SPostStudy
 
 
-def put_patch_pattern(
+def put_patch_response(
         custom_message: str,
         old_data: dict | SPostSport | SPutSport | SPostStudy,
         new_data: dict | SPostSport | SPutSport | SPostStudy

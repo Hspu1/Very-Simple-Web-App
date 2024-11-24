@@ -1,4 +1,4 @@
-def get_post_put_patch_pattern(correction: str, mtv_id: int,
+def get_post_put_patch_response(correction: str, mtv_id: int,
                                custom_message: str = "") -> dict[str, str]:
     return {
         "problem": "Index Error",

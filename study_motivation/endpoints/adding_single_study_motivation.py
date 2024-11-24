@@ -1,7 +1,7 @@
 from main_files.motivation_fake_dbs import study_mtv
 
-from main_files.patterns.GET_POST_PUT_PATCH_pattern import (
-    get_post_put_patch_pattern)
+from main_files.responses.GET_POST_PUT_PATCH_response import (
+    get_post_put_patch_response)
 
 from study_motivation.models.POSTStudyModel import SPostStudy
 
@@ -23,6 +23,6 @@ def adding_single_study_mtv(
             "entered_data": endpoint_post_data
         }
 
-    return get_post_put_patch_pattern(correction="study",
-                                    mtv_id=entered_study_mtv_id,
-                                custom_message="is already in the database")
+    return get_post_put_patch_response(correction="study",
+                                       mtv_id=entered_study_mtv_id,
+                                       custom_message="is already in the database")
